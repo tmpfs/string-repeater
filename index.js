@@ -9,11 +9,7 @@
  *  @return A new repeated string.
  */
 function repeat(input, times) {
-  if(typeof(String.prototype.repeat) === 'function') {
-    return input.repeat(times);
-  }else{
-    return impl.call(input, times);
-  }
+  return impl.call(input, times);
 }
 
 /**
@@ -25,16 +21,35 @@ function repeat(input, times) {
  *
  *  Is very, very slow.
  *
+ *  This implementation:
+ *
+ *  var ret = '';
+ *  for(var i = 0; i < times; i++) {
+ *    ret += this;
+ *  }
+ *  return ret;
+ *
+ *  Is faster than `string-repeat` but slower than `string.prototype.repeat`.
+ *
  *  @param times The number of times to repeat.
  *
  *  @return A new repeated string.
  */
 function impl(times) {
-  var ret = '';
-  for(var i = 0; i < times; i++) {
-    ret += this;
+  // optimized loop from string.prototype.repeat
+  var n = times;
+  var result = '';
+  var string = '' + (this || '');
+  while (n) {
+    if (n % 2 === 1) {
+      result += string;
+    }
+    if (n > 1) {
+      string += string;
+    }
+    n >>= 1;
   }
-  return ret;
+  return result;
 }
 
 repeat.impl = impl;

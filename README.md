@@ -4,6 +4,7 @@ Table of Contents
 * [String Repeat](#string-repeat)
   * [Install](#install)
   * [Usage](#usage)
+  * [Benchmark](#benchmark)
   * [Source](#source)
   * [Developer](#developer)
     * [Test](#test)
@@ -42,6 +43,14 @@ var repeat = require('string-repeater');
 String.prototype.repeat = String.prototype.repeat || repeat.impl;
 ```
 
+## Benchmark
+
+```javascript
+string-repeater x 5,083,348 ops/sec ±2.28% (83 runs sampled)
+string-repeat x 67,121 ops/sec ±2.96% (86 runs sampled)
+string.prototype.repeat x 4,487,652 ops/sec ±1.48% (88 runs sampled)
+```
+
 ## Source
 
 ```javascript
@@ -56,22 +65,47 @@ String.prototype.repeat = String.prototype.repeat || repeat.impl;
  *  @return A new repeated string.
  */
 function repeat(input, times) {
-  if(typeof(String.prototype.repeat) === 'function') {
-    return input.repeat(times);
-  }else{
-    return impl.call(input, times);
-  }
+  return impl.call(input, times);
 }
 
 /**
  *  Prototype implementation called with the string as the scope.
+ *
+ *  Note that this implementation:
+ *
+ *  return new Array(Math.abs(times) + 1).join(this);
+ *
+ *  Is very, very slow.
+ *
+ *  This implementation:
+ *
+ *  var ret = '';
+ *  for(var i = 0; i < times; i++) {
+ *    ret += this;
+ *  }
+ *  return ret;
+ *
+ *  Is faster than `string-repeat` but slower than `string.prototype.repeat`.
  *
  *  @param times The number of times to repeat.
  *
  *  @return A new repeated string.
  */
 function impl(times) {
-  return new Array(Math.abs(times) + 1).join(this);
+  // optimized loop from string.prototype.repeat
+  var n = times;
+  var result = '';
+  var string = '' + (this || '');
+  while (n) {
+    if (n % 2 === 1) {
+      result += string;
+    }
+    if (n > 1) {
+      string += string;
+    }
+    n >>= 1;
+  }
+  return result;
 }
 
 repeat.impl = impl;

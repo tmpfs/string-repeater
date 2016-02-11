@@ -48,6 +48,12 @@
         ]
       },
       {
+        "title": "Benchmark",
+        "bin": "node bench/bench.js",
+        "type": "code",
+        "language": "javascript"
+      },
+      {
         "title": "Source",
         "inc": "../../index.js",
         "type": "code",
