@@ -9,6 +9,6 @@ var repeat = require('string-repeater')
 Or if you prefer to polyfill `String.prototype`:
 
 ```javascript
-var repeat = require('string-repeater')
+var repeat = require('string-repeater');
 String.prototype.repeat = String.prototype.repeat || repeat.impl;
 ```
