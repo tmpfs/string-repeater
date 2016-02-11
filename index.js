@@ -40,11 +40,11 @@ function impl(times) {
   var n = times;
   var result = '';
   var string = '' + (this || '');
-  while (n) {
-    if (n % 2 === 1) {
+  while(n) {
+    if(n % 2 === 1) {
       result += string;
     }
-    if (n > 1) {
+    if(n > 1) {
       string += string;
     }
     n >>= 1;

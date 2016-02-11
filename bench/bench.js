@@ -9,9 +9,7 @@ var Benchmark = require('benchmark').Benchmark
   , benchfile = process.argv[3] || 'README.md'
   , contents = fs.readFileSync(benchfile, 'utf8')
 
-  // has to be required here so that it is not deferred to
-  // by this library
-  require('string.prototype.repeat')
+require('string.prototype.repeat')
 
 bench.add('string-repeater', function() {
   repeat(contents, times);
