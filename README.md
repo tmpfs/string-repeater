@@ -16,8 +16,8 @@ Table of Contents
 String Repeat
 =============
 
-[<img src="https://travis-ci.org/tmpfs/string-repeater.svg?v=1" alt="Build Status">](https://travis-ci.org/tmpfs/string-repeater)
-[<img src="http://img.shields.io/npm/v/string-repeater.svg?v=1" alt="npm version">](https://npmjs.org/package/string-repeater)
+[<img src="https://travis-ci.org/tmpfs/string-repeater.svg?v=2" alt="Build Status">](https://travis-ci.org/tmpfs/string-repeater)
+[<img src="http://img.shields.io/npm/v/string-repeater.svg?v=2" alt="npm version">](https://npmjs.org/package/string-repeater)
 [<img src="https://coveralls.io/repos/tmpfs/string-repeater/badge.svg?branch=master&service=github&v=2" alt="Coverage Status">](https://coveralls.io/github/tmpfs/string-repeater?branch=master).
 
 Repeat a string.
@@ -46,9 +46,9 @@ String.prototype.repeat = String.prototype.repeat || repeat.impl;
 ## Benchmark
 
 ```javascript
-string-repeater x 4,918,080 ops/sec ±2.06% (85 runs sampled)
-string-repeat x 64,716 ops/sec ±4.20% (85 runs sampled)
-string.prototype.repeat x 4,327,131 ops/sec ±1.27% (87 runs sampled)
+string-repeater x 4,439,603 ops/sec ±2.15% (85 runs sampled)
+string-repeat x 60,621 ops/sec ±4.63% (81 runs sampled)
+string.prototype.repeat x 4,071,996 ops/sec ±2.14% (84 runs sampled)
 ```
 
 ## Source
