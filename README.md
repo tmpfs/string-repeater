@@ -46,9 +46,9 @@ String.prototype.repeat = String.prototype.repeat || repeat.impl;
 ## Benchmark
 
 ```javascript
-string-repeater x 4,157,992 ops/sec ±1.81% (85 runs sampled)
-string-repeat x 64,343 ops/sec ±3.19% (83 runs sampled)
-string.prototype.repeat x 4,267,303 ops/sec ±1.61% (86 runs sampled)
+string-repeater x 4,591,528 ops/sec ±2.10% (85 runs sampled)
+string-repeat x 64,376 ops/sec ±3.10% (85 runs sampled)
+string.prototype.repeat x 4,321,763 ops/sec ±1.87% (87 runs sampled)
 ```
 
 ## Source
@@ -93,7 +93,7 @@ function repeat(input, times) {
  */
 function impl(times) {
   // optimized loop from string.prototype.repeat
-  var n = times
+  var n = Math.abs(times)
     , result = ''
     , string = '' + this;
   while(n) {
