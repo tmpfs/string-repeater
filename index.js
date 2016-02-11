@@ -36,10 +36,11 @@ function repeat(input, times) {
  *  @return A new repeated string.
  */
 function impl(times) {
-  // optimized loop from string.prototype.repeat
-  var n = Math.abs(times)
+  // conditional is faster than Math.abs()
+  var n = times < 0 ? -times : times
     , result = ''
     , string = '' + this;
+  // optimized loop from string.prototype.repeat
   while(n) {
     if(n % 2 === 1) {
       result += string;
