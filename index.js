@@ -37,9 +37,9 @@ function repeat(input, times) {
  */
 function impl(times) {
   // optimized loop from string.prototype.repeat
-  var n = times;
-  var result = '';
-  var string = '' + (this || '');
+  var n = times
+    , result = ''
+    , string = '' + this;
   while(n) {
     if(n % 2 === 1) {
       result += string;
