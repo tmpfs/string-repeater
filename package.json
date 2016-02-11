@@ -1,0 +1,62 @@
+{
+  "name": "string-repeater",
+  "version": "1.0.0",
+  "description": "Repeat a string",
+  "author": "muji",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tmpfs/string-repeater"
+  },
+  "bugs": {
+    "url": "https://github.com/tmpfs/string-repeater/issues"
+  },
+  "keywords": [
+    "string",
+    "repeat"
+  ],
+  "devDependencies": {
+    "benchmark": "~2.1.0",
+    "chai": "~3.5.0",
+    "coveralls": "~2.11.6",
+    "istanbul": "~0.4.2",
+    "mocha": "~2.4.5",
+    "string-repeat": "~1.1.1"
+  },
+  "scripts": {
+    "lint": "jshint . && jscs .",
+    "readme": "mdp --force -v",
+    "clean": "rm -rf coverage",
+    "test": "NODE_ENV=test mocha ${SPEC:-test/spec}",
+    "cover": "NODE_ENV=test istanbul cover _mocha -- ${SPEC:-test/spec}",
+    "coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+  },
+  "mdp": {
+    "title": "String Repeat",
+    "pedantic": true,
+    "include": "doc/readme",
+    "links": "links.md",
+    "toc": "Table of Contents",
+    "base": "https://github.com/tmpfs/string-repeater",
+    "partial": [
+      {
+        "inc": [
+          "introduction.md",
+          "install.md",
+          "usage.md"
+        ]
+      },
+      {
+        "title": "Source",
+        "inc": "../../index.js",
+        "type": "code",
+        "language": "javascript"
+      },
+      {
+        "inc": [
+          "developer.md"
+        ]
+      }
+    ]
+  }
+}
