@@ -37,7 +37,7 @@ function repeat(input, times) {
  */
 function impl(times) {
   // optimized loop from string.prototype.repeat
-  var n = times
+  var n = Math.abs(times)
     , result = ''
     , string = '' + this;
   while(n) {
