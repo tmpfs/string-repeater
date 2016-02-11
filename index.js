@@ -19,12 +19,22 @@ function repeat(input, times) {
 /**
  *  Prototype implementation called with the string as the scope.
  *
+ *  Note that this implementation:
+ *
+ *  return new Array(Math.abs(times) + 1).join(this);
+ *
+ *  Is very, very slow.
+ *
  *  @param times The number of times to repeat.
  *
  *  @return A new repeated string.
  */
 function impl(times) {
-  return new Array(Math.abs(times) + 1).join(this);
+  var ret = '';
+  for(var i = 0; i < times; i++) {
+    ret += this;
+  }
+  return ret;
 }
 
 repeat.impl = impl;

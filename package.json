@@ -21,7 +21,8 @@
     "coveralls": "~2.11.6",
     "istanbul": "~0.4.2",
     "mocha": "~2.4.5",
-    "string-repeat": "~1.1.1"
+    "string-repeat": "~1.1.1",
+    "string.prototype.repeat": "~0.2.0"
   },
   "scripts": {
     "lint": "jshint . && jscs .",
